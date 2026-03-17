@@ -1516,24 +1516,13 @@
       const dispositivo = dispositivoEl ? dispositivoEl.value : '';
 
       try {
-        const res = await fetch('https://api.brevo.com/v3/contacts', {
+        const res = await fetch('https://formspree.io/f/mnjgodre', {
           method: 'POST',
-          headers: {
-            'accept': 'application/json',
-            'content-type': 'application/json',
-            'api-key': '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'
-          },
-          body: JSON.stringify({
-            email: email,
-            listIds: [3],
-            updateEnabled: true
-          })
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email: email })
         });
-        const responseText = await res.text();
-        console.log('Brevo status:', res.status);
-        console.log('Brevo response:', responseText);
 
-        if (res.status === 201 || res.status === 204) {
+        if (res.ok) {
           gtag('event', 'sign_up', {
             'method': inputId === 'hero-email' ? 'hero_form' : 'final_form'
           });
