@@ -71,9 +71,17 @@
       justify-content: space-between;
       align-items: center;
       z-index: 100;
-      background: rgba(253, 250, 245, 0.92);
+      background: #F5F0E6;
+      border-bottom: 1px solid #E8DDD0;
       backdrop-filter: blur(8px);
       -webkit-backdrop-filter: blur(8px);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      nav {
+        background: #1A0F0A;
+        border-bottom: 1px solid #3D2015;
+      }
     }
 
     .nav-logo {
