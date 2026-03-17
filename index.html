@@ -1519,7 +1519,13 @@
         const res = await fetch('https://formspree.io/f/mnjgodre', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email: email })
+          body: JSON.stringify({
+            email: email,
+            name: document.querySelector('input[placeholder*="nome"], input[name="name"]')?.value || '',
+            dispositivo: document.querySelector('input[name="dispositivo"]:checked, input[name="device"]:checked')?.value || '',
+            situazione: document.querySelector('select[name="situazione"], input[name="situazione"]')?.value ||
+              document.querySelector('select')?.value || ''
+          })
         });
 
         if (res.ok) {
