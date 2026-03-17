@@ -21,6 +21,9 @@ document.addEventListener('DOMContentLoaded', function() {
               updateEnabled: true
             })
           });
+          const responseText = await res.text();
+          console.log('Brevo status:', res.status);
+          console.log('Brevo response:', responseText);
           if (res.status === 201 || res.status === 204) {
             form.style.display = 'none';
             const success = document.getElementById('success-message')
