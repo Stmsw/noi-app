@@ -85,6 +85,14 @@
       width: auto;
       display: block;
     }
+    .nav-logo img {
+      filter: brightness(0);
+    }
+    @media (prefers-color-scheme: dark) {
+      .nav-logo img {
+        filter: none;
+      }
+    }
 
     .nav-cta {
       font-size: 13px;
