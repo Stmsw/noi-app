@@ -17,13 +17,23 @@
     href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap"
     rel="stylesheet">
 
-  <!-- Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-RPB4DBS0X3"></script>
   <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-    gtag('config', 'G-RPB4DBS0X3');
+    // Google Analytics caricato solo con consenso completo (GDPR)
+    function loadGA() {
+      if (document.getElementById('ga-script')) return;
+      var s = document.createElement('script');
+      s.id = 'ga-script';
+      s.async = true;
+      s.src = 'https://www.googletagmanager.com/gtag/js?id=G-RPB4DBS0X3';
+      document.head.appendChild(s);
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      window.gtag = gtag;
+      gtag('js', new Date());
+      gtag('config', 'G-RPB4DBS0X3');
+    }
+    // Carica GA se l'utente ha già dato il consenso completo
+    if (localStorage.getItem('noi_cookie_consent') === 'all') { loadGA(); }
   </script>
   <style>
     :root {
@@ -1108,6 +1118,9 @@
         margin-bottom: 20px;
       }
 
+      /* Disclaimer */
+      .noi-disclaimer { padding: 24px 20px !important; }
+
       /* Footer */
       footer {
         padding: 32px 20px;
@@ -1136,10 +1149,78 @@
       background: linear-gradient(135deg, #FF5365 0%, #FF3476 100%);
       color: #FFFFFF !important;
     }
+
+    /* COOKIE BANNER */
+    #cookie-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: var(--deep);
+      color: var(--cream);
+      padding: 20px 40px;
+      z-index: 9999;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+      box-shadow: 0 -4px 24px rgba(0,0,0,0.3);
+      transform: translateY(100%);
+      transition: transform 0.4s ease;
+    }
+    #cookie-banner.visible { transform: translateY(0); }
+    #cookie-banner p {
+      font-size: 13px;
+      line-height: 1.6;
+      color: rgba(255,255,255,0.75);
+      flex: 1;
+      min-width: 240px;
+      margin: 0;
+    }
+    #cookie-banner a { color: var(--terracotta); text-decoration: underline; }
+    .cookie-btns { display: flex; gap: 12px; flex-shrink: 0; }
+    .cookie-btn {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 2px;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: opacity 0.2s;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .cookie-btn:hover { opacity: 0.85; }
+    .cookie-btn-all {
+      background: linear-gradient(135deg, #FF5365 0%, #FF3476 100%);
+      color: #fff;
+    }
+    .cookie-btn-necessary {
+      background: transparent;
+      border: 1px solid rgba(255,255,255,0.25);
+      color: rgba(255,255,255,0.7);
+    }
+    @media (max-width: 480px) {
+      #cookie-banner { padding: 16px 20px; }
+      .cookie-btns { width: 100%; }
+      .cookie-btn { flex: 1; text-align: center; }
+    }
   </style>
 </head>
 
 <body>
+
+  <!-- COOKIE BANNER GDPR -->
+  <div id="cookie-banner" role="dialog" aria-label="Consenso cookie">
+    <p>Usiamo cookie tecnici per il funzionamento del sito e cookie analitici (Google Analytics) per migliorare l'esperienza.
+      Puoi accettare tutti o solo i necessari. <a href="privacy.html">Informativa privacy</a>.</p>
+    <div class="cookie-btns">
+      <button class="cookie-btn cookie-btn-necessary" onclick="setCookieConsent('necessary')">Solo necessari</button>
+      <button class="cookie-btn cookie-btn-all" onclick="setCookieConsent('all')">Accetta tutti</button>
+    </div>
+  </div>
 
   <nav>
     <a href="#" class="nav-logo" aria-label="nOi">
@@ -1477,13 +1558,23 @@
     </div>
   </section>
 
+  <!-- DISCLAIMER -->
+  <div class="noi-disclaimer" style="background:var(--cream);padding:32px 80px;text-align:center;border-top:1px solid var(--blush);">
+    <p style="font-size:12px;color:#888888;line-height:1.8;max-width:680px;margin:0 auto;">
+      nOi è uno spazio di supporto relazionale, non un servizio di assistenza psicologica professionale.
+      I contenuti generati dall'AI hanno scopo orientativo e non sostituiscono il parere di un professionista della salute mentale.<br>
+      <strong>In caso di emergenza chiama il 112.</strong>
+      Per situazioni di violenza domestica: <strong>1522</strong> (gratuito, 24h)
+    </p>
+  </div>
+
   <!-- FOOTER -->
   <footer>
     <div class="footer-logo">nOi</div>
     <p class="footer-note">© 2026 nOi App · Tutti i diritti riservati</p>
     <div class="footer-links">
-      <a href="#" onclick="openModal('privacy');return false;">Privacy</a>
-      <a href="#" onclick="openModal('termini');return false;">Termini</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Termini</a>
       <a href="#" onclick="openModal('contatti');return false;">Contatti</a>
     </div>
   </footer>
@@ -1649,6 +1740,29 @@
       setTimeout(animateBubbles, 6000);
     }
     setTimeout(animateBubbles, 2000);
+  </script>
+
+  <script>
+    // Cookie banner logic
+    (function() {
+      var consent = localStorage.getItem('noi_cookie_consent');
+      if (!consent) {
+        var banner = document.getElementById('cookie-banner');
+        if (banner) {
+          setTimeout(function() { banner.classList.add('visible'); }, 800);
+        }
+      }
+    })();
+
+    function setCookieConsent(choice) {
+      localStorage.setItem('noi_cookie_consent', choice);
+      var banner = document.getElementById('cookie-banner');
+      if (banner) {
+        banner.style.transform = 'translateY(100%)';
+        setTimeout(function() { banner.style.display = 'none'; }, 400);
+      }
+      if (choice === 'all') { loadGA(); }
+    }
   </script>
 
 </body>
