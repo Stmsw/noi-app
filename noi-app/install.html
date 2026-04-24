@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Come installare nOi Beta</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <link rel="apple-touch-icon" href="favicon.png">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=DM+Sans:wght@300;400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --cream: #F5F0E8;
+      --warm-white: #fdf9f5;
+      --deep: #1C1410;
+      --terracotta: #C4614A;
+      --blush: #E8C4B4;
+      --sage: #8A9E8C;
+      --gold: #C9A96E;
+      --muted: #8C7B6E;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--warm-white);
+      color: var(--deep);
+      font-family: 'DM Sans', sans-serif;
+      font-weight: 300;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 1000;
+      opacity: 0.4;
+    }
+
+    /* NAV */
+    nav {
+      width: 100%;
+      padding: 20px 48px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #fdf9f5;
+    }
+
+    .nav-logo { display: flex; align-items: center; }
+
+    .nav-back {
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted);
+      text-decoration: none;
+      border-bottom: 1px solid var(--blush);
+      padding-bottom: 2px;
+      transition: color 0.3s, border-color 0.3s;
+    }
+    .nav-back:hover { color: var(--terracotta); border-color: var(--terracotta); }
+
+    /* HERO STRIP */
+    .page-hero {
+      background: var(--deep);
+      padding: 80px 80px 64px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      top: -200px; left: 50%;
+      transform: translateX(-50%);
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(196,97,74,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-eyebrow {
+      font-size: 11px;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 20px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.1s;
+    }
+
+    .page-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(36px, 5vw, 72px);
+      font-weight: 300;
+      color: var(--cream);
+      line-height: 1.05;
+      max-width: 700px;
+      opacity: 0;
+      animation: fadeUp 0.7s ease forwards 0.3s;
+    }
+
+    .page-title em { font-style: italic; color: var(--terracotta); }
+
+    /* MAIN CONTENT */
+    .install-body {
+      max-width: 780px;
+      margin: 0 auto;
+      padding: 80px 40px 100px;
+    }
+
+    /* INTRO BOX */
+    .intro-box {
+      background: var(--cream);
+      border-left: 3px solid var(--terracotta);
+      padding: 28px 32px;
+      margin-bottom: 64px;
+      border-radius: 0 2px 2px 0;
+    }
+
+    .intro-box p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+
+    /* STEP */
+    .step {
+      margin-bottom: 56px;
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .step.visible { opacity: 1; transform: translateY(0); }
+
+    .step-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 24px;
+      margin-bottom: 20px;
+    }
+
+    .step-number {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 56px;
+      font-weight: 300;
+      color: var(--blush);
+      line-height: 1;
+      min-width: 52px;
+    }
+
+    .step-meta { padding-top: 6px; }
+
+    .step-label {
+      font-size: 11px;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--terracotta);
+      margin-bottom: 6px;
+    }
+
+    .step-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28px;
+      font-weight: 400;
+      color: var(--deep);
+    }
+
+    .step-body {
+      padding-left: 76px;
+    }
+
+    .step-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .step-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .step-list li::before {
+      content: '—';
+      color: var(--terracotta);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+
+    .step-list li a {
+      color: var(--terracotta);
+      text-decoration: none;
+      border-bottom: 1px solid var(--blush);
+      transition: border-color 0.2s;
+    }
+
+    .step-list li a:hover { border-color: var(--terracotta); }
+
+    .step-note {
+      margin-top: 16px;
+      padding: 16px 20px;
+      background: rgba(196,97,74,0.06);
+      border: 1px solid rgba(196,97,74,0.2);
+      border-radius: 2px;
+      font-size: 13px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .step-note strong { color: var(--deep); font-weight: 500; }
+
+    /* DIVIDER */
+    .step-divider {
+      height: 1px;
+      background: linear-gradient(to right, var(--blush), transparent);
+      margin-bottom: 56px;
+    }
+
+    /* HELP BOX */
+    .help-box {
+      background: var(--deep);
+      padding: 48px 40px;
+      border-radius: 2px;
+      margin-top: 64px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .help-box::before {
+      content: '?';
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 240px;
+      color: rgba(255,255,255,0.03);
+      position: absolute;
+      right: -20px;
+      top: -40px;
+      line-height: 1;
+      pointer-events: none;
+    }
+
+    .help-box .step-label { color: var(--terracotta); margin-bottom: 10px; }
+
+    .help-box .step-title {
+      color: var(--cream);
+      font-size: 32px;
+      margin-bottom: 28px;
+    }
+
+    .help-box .step-list li { color: rgba(255,255,255,0.6); }
+
+    .help-box .step-list li a {
+      color: var(--terracotta);
+      border-bottom-color: rgba(196,97,74,0.3);
+    }
+
+    /* CTA */
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 64px;
+      padding: 16px 36px;
+      background: linear-gradient(135deg, #FF5365 0%, #FF3476 100%);
+      color: #fdf9f5;
+      border-radius: 2px;
+      text-decoration: none;
+      font-size: 13px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      transition: transform 0.2s, background 0.3s;
+    }
+
+    .back-btn:hover {
+      background: linear-gradient(135deg, #FF3476 0%, #FF5365 100%);
+      transform: translateY(-1px);
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--deep);
+      padding: 40px 80px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      color: var(--cream);
+      font-weight: 300;
+      letter-spacing: 0.15em;
+    }
+
+    .footer-note { font-size: 12px; color: var(--muted); }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+
+      .page-hero { padding: 60px 32px 48px; }
+
+      .install-body { padding: 56px 24px 80px; }
+
+      .step-number { font-size: 40px; min-width: 40px; }
+
+      .step-body { padding-left: 0; }
+
+      .step-header { gap: 16px; }
+
+      .help-box { padding: 36px 28px; }
+
+      footer { padding: 32px 24px; flex-direction: column; text-align: center; }
+    }
+
+    @media (max-width: 480px) {
+      .page-hero { padding: 48px 20px 40px; }
+      .install-body { padding: 40px 20px 64px; }
+      .intro-box { padding: 20px 24px; }
+      .step-title { font-size: 22px; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a href="index.html" class="nav-logo" aria-label="nOi">
+      <img src="noi_logo_light.png" alt="nOi" height="80" width="80" style="object-fit:contain;">
+    </a>
+    <a href="index.html" class="nav-back">← Torna alla home</a>
+  </nav>
+
+  <!-- HERO -->
+  <div class="page-hero">
+    <p class="hero-eyebrow">Beta · Android</p>
+    <h1 class="page-title">Come installare<br><em>nOi</em> Beta</h1>
+  </div>
+
+  <!-- CONTENT -->
+  <div class="install-body">
+
+    <!-- INTRO -->
+    <div class="intro-box">
+      <p>nOi è in fase di beta test. Per installarla sul tuo Android segui questi passaggi nell'ordine indicato.</p>
+    </div>
+
+    <!-- STEP 1 -->
+    <div class="step">
+      <div class="step-header">
+        <div class="step-number">01</div>
+        <div class="step-meta">
+          <p class="step-label">Passo 1</p>
+          <h2 class="step-title">Installa Firebase App Tester</h2>
+        </div>
+      </div>
+      <div class="step-body">
+        <ul class="step-list">
+          <li>Apri il <strong>Play Store</strong> sul tuo telefono</li>
+          <li>Cerca <strong>"Firebase App Tester"</strong> oppure clicca questo link:<br>
+            <a href="https://play.google.com/store/apps/details?id=com.google.firebase.appdistribution" target="_blank">
+              play.google.com → Firebase App Tester
+            </a>
+          </li>
+          <li>Installalo e <strong>accedi con la stessa email</strong> con cui hai ricevuto l'invito</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="step-divider"></div>
+
+    <!-- STEP 2 -->
+    <div class="step">
+      <div class="step-header">
+        <div class="step-number">02</div>
+        <div class="step-meta">
+          <p class="step-label">Passo 2</p>
+          <h2 class="step-title">Abilita fonti sconosciute</h2>
+        </div>
+      </div>
+      <div class="step-body">
+        <ul class="step-list">
+          <li>Vai in <strong>Impostazioni Android</strong> → Sicurezza (o App)</li>
+          <li>Attiva <strong>"Installa app sconosciute"</strong> per Firebase App Tester</li>
+        </ul>
+        <div class="step-note">
+          <strong>Samsung Galaxy:</strong> Impostazioni → Biometria e sicurezza → Installa app sconosciute
+        </div>
+      </div>
+    </div>
+
+    <div class="step-divider"></div>
+
+    <!-- STEP 3 -->
+    <div class="step">
+      <div class="step-header">
+        <div class="step-number">03</div>
+        <div class="step-meta">
+          <p class="step-label">Passo 3</p>
+          <h2 class="step-title">Installa nOi</h2>
+        </div>
+      </div>
+      <div class="step-body">
+        <ul class="step-list">
+          <li>Apri l'<strong>email di invito</strong> che hai ricevuto da Firebase</li>
+          <li>Clicca <strong>"Download latest release"</strong></li>
+          <li>Oppure apri <strong>Firebase App Tester</strong> e scarica nOi dalla lista</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="step-divider"></div>
+
+    <!-- STEP 4 — PRIMO AVVIO -->
+    <div class="step">
+      <div class="step-header">
+        <div class="step-number">04</div>
+        <div class="step-meta">
+          <p class="step-label">Primo avvio</p>
+          <h2 class="step-title">Configura il tuo account</h2>
+        </div>
+      </div>
+      <div class="step-body">
+        <ul class="step-list">
+          <li>Al primo avvio ti verrà chiesto di inserire il tuo <strong>numero di telefono</strong></li>
+          <li>Riceverai un <strong>SMS con codice OTP</strong> per accedere</li>
+          <li>Inserisci il tuo nome e inizia a esplorare</li>
+          <li>Per connetterti con un partner o amico: vai in <strong>Rubrica → Invita</strong> e condividi il tuo codice a 6 cifre</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="step-divider"></div>
+
+    <!-- HELP -->
+    <div class="help-box step">
+      <p class="step-label">Hai problemi?</p>
+      <h2 class="step-title">Siamo qui per aiutarti.</h2>
+      <ul class="step-list">
+        <li>Scrivi su Discord: <a href="https://discord.com/channels/1484657720073130315/1484657821357314260" target="_blank">Entra nella community</a></li>
+        <li>Oppure rispondi direttamente all'email di invito che hai ricevuto</li>
+      </ul>
+    </div>
+
+    <!-- BACK BUTTON -->
+    <a href="index.html" class="back-btn">← Torna alla home</a>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">nOi</div>
+    <p class="footer-note">© 2026 nOi App · Tutti i diritti riservati</p>
+    <p class="footer-note">Beta · Solo Android</p>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const steps = document.querySelectorAll('.step');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1 });
+    steps.forEach(s => observer.observe(s));
+  </script>
+
+</body>
+</html>
