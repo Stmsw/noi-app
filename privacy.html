@@ -18,6 +18,7 @@
     .eyebrow { font-size:11px; letter-spacing:0.25em; text-transform:uppercase; color:var(--terracotta); margin-bottom:20px; }
     h1 { font-family:'Cormorant Garamond',serif; font-size:clamp(36px,5vw,64px); font-weight:300; line-height:1.1; margin-bottom:40px; }
     h2 { font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:400; margin:48px 0 16px; color:var(--deep); }
+    h3 { font-size:15px; font-weight:500; margin:24px 0 8px; color:var(--deep); }
     p, li { font-size:15px; line-height:1.85; color:var(--muted); margin-bottom:16px; }
     ul { padding-left:20px; margin-bottom:16px; }
     a { color:var(--terracotta); }
@@ -39,7 +40,7 @@
     <p class="eyebrow">Documento legale</p>
     <h1>Privacy Policy</h1>
 
-    <p>La presente Privacy Policy descrive come nOi App raccoglie, utilizza e protegge le informazioni personali degli utenti del sito web e dell'applicazione nOi.</p>
+    <p>La presente Privacy Policy descrive come nOi App raccoglie, utilizza e protegge le informazioni personali degli utenti dell'applicazione nOi ("l'App") e del sito web associato. È conforme al Regolamento Generale sulla Protezione dei Dati (GDPR) e ai requisiti di Google Play.</p>
 
     <h2>1. Titolare del trattamento</h2>
     <p>Titolare del trattamento: <strong>nOi App</strong><br>
@@ -49,38 +50,71 @@
     <h2>2. Dati raccolti</h2>
     <p>nOi App raccoglie le seguenti categorie di dati personali:</p>
     <ul>
-      <li><strong>Dati di registrazione:</strong> indirizzo email, nome (opzionale), preferenze di dispositivo forniti tramite il form di pre-registrazione sul sito web.</li>
-      <li><strong>Dati dell'account app:</strong> numero di telefono utilizzato per l'autenticazione tramite Firebase Authentication.</li>
-      <li><strong>Dati delle conversazioni:</strong> messaggi e contenuti inseriti dall'utente nell'app, necessari per il funzionamento del servizio AI. I dati sono associati all'account dell'utente e trattati secondo le finalità descritte in questa policy.</li>
-      <li><strong>Dati tecnici:</strong> indirizzo IP, tipo di browser, sistema operativo, dati di navigazione raccolti tramite Google Analytics (solo con consenso dell'utente).</li>
+      <li><strong>Dati di registrazione:</strong> indirizzo email, nome (opzionale), preferenze di dispositivo.</li>
+      <li><strong>Dati dell'account:</strong> numero di telefono utilizzato per l'autenticazione tramite Firebase Authentication.</li>
+      <li><strong>Dati delle conversazioni:</strong> messaggi di testo, messaggi vocali e foto condivise dall'utente nell'app, necessari per il funzionamento del servizio.</li>
+      <li><strong>Dati tecnici:</strong> indirizzo IP, tipo di dispositivo, sistema operativo, dati di utilizzo raccolti tramite Firebase Analytics.</li>
+      <li><strong>Identificatore pubblicitario (Advertising ID):</strong> utilizzato da Firebase Analytics esclusivamente per misurare il funzionamento dell'app. Non viene utilizzato per mostrare annunci pubblicitari.</li>
     </ul>
 
-    <h2>3. Finalità del trattamento</h2>
+    <h2>3. Permessi dell'applicazione</h2>
+    <p>L'app richiede i seguenti permessi sul dispositivo, ciascuno con una finalità specifica:</p>
+
+    <h3>Fotocamera</h3>
+    <p>Il permesso fotocamera (<code>android.permission.CAMERA</code>) è utilizzato esclusivamente per consentire agli utenti di scattare foto da condividere nelle conversazioni private con il proprio partner all'interno dell'app. Le foto non vengono trasmesse a terze parti né utilizzate per altre finalità.</p>
+
+    <h3>Microfono</h3>
+    <p>Il permesso microfono (<code>android.permission.RECORD_AUDIO</code>) è utilizzato per registrare messaggi vocali da inviare nelle conversazioni. Le registrazioni vengono trasmesse in modo sicuro e associate esclusivamente all'account dell'utente.</p>
+
+    <h3>Archiviazione e file multimediali</h3>
+    <p>I permessi di lettura dei media (<code>READ_MEDIA_IMAGES</code>, <code>READ_MEDIA_AUDIO</code>, <code>READ_MEDIA_VIDEO</code>) sono utilizzati per consentire all'utente di selezionare foto e file audio dal proprio dispositivo da condividere in chat.</p>
+
+    <h3>Contatti</h3>
+    <p>Il permesso contatti (<code>android.permission.READ_CONTACTS</code>) è utilizzato per facilitare la connessione con il partner tramite il numero di telefono. I dati dei contatti non vengono caricati su server esterni.</p>
+
+    <h3>SMS</h3>
+    <p>I permessi SMS (<code>RECEIVE_SMS</code>, <code>READ_SMS</code>) sono utilizzati esclusivamente per il rilevamento automatico del codice OTP durante la verifica del numero di telefono tramite Firebase Authentication. Il contenuto degli SMS non viene letto né trasmesso.</p>
+
+    <h3>Posizione</h3>
+    <p>I permessi di posizione (<code>ACCESS_FINE_LOCATION</code>, <code>ACCESS_COARSE_LOCATION</code>) sono utilizzati per funzionalità opzionali di condivisione della posizione con il partner. La posizione viene condivisa solo con l'esplicito consenso dell'utente e non viene trasmessa a terze parti.</p>
+
+    <h3>Notifiche</h3>
+    <p>Il permesso notifiche (<code>POST_NOTIFICATIONS</code>) è utilizzato per inviare notifiche push relative ai nuovi messaggi ricevuti dall'utente.</p>
+
+    <h3>Bluetooth e rete locale</h3>
+    <p>I permessi Bluetooth e Wi-Fi sono utilizzati dall'SDK Agora per la funzionalità di comunicazione audio/video in tempo reale, esclusivamente durante le chiamate attive.</p>
+
+    <h2>4. Identificatore pubblicitario (Advertising ID)</h2>
+    <p>L'app utilizza l'Advertising ID di Google (<code>com.google.android.gms.permission.AD_ID</code>) tramite Firebase Analytics per misurare le performance dell'app e migliorare l'esperienza utente. L'Advertising ID <strong>non è utilizzato</strong> per scopi pubblicitari né per targeting comportamentale. L'utente può reimpostare o disabilitare l'Advertising ID nelle impostazioni del proprio dispositivo Android.</p>
+
+    <h2>5. Finalità del trattamento</h2>
     <ul>
-      <li>Gestione della lista d'attesa e comunicazioni relative al lancio dell'app.</li>
-      <li>Fornitura del servizio nOi e delle sue funzionalità AI.</li>
-      <li>Miglioramento del prodotto e analisi statistiche aggregate (solo con consenso).</li>
+      <li>Fornitura del servizio nOi e delle sue funzionalità.</li>
+      <li>Autenticazione sicura dell'utente tramite numero di telefono.</li>
+      <li>Invio di notifiche relative all'utilizzo del servizio.</li>
+      <li>Miglioramento del prodotto tramite analisi statistiche aggregate anonimizzate.</li>
       <li>Adempimento di obblighi legali.</li>
     </ul>
 
-    <h2>4. Base giuridica</h2>
+    <h2>6. Base giuridica</h2>
     <p>Il trattamento si basa sul consenso dell'interessato (Art. 6(1)(a) GDPR) e sull'esecuzione di un contratto (Art. 6(1)(b) GDPR). Per le comunicazioni di marketing, il consenso può essere revocato in qualsiasi momento.</p>
 
-    <h2>5. Conservazione dei dati</h2>
-    <p>I dati vengono conservati per il tempo necessario alle finalità indicate e comunque non oltre 3 anni dall'ultima interazione, salvo diversi obblighi di legge. L'utente può richiedere la cancellazione immediata dei propri dati.</p>
+    <h2>7. Conservazione dei dati</h2>
+    <p>I dati vengono conservati per il tempo necessario alle finalità indicate e comunque non oltre 3 anni dall'ultima interazione, salvo diversi obblighi di legge. L'utente può richiedere la cancellazione immediata dei propri dati scrivendo a <a href="mailto:noicompapp@gmail.com">noicompapp@gmail.com</a>.</p>
 
-    <h2>6. Condivisione con terze parti</h2>
-    <p>nOi App non vende né cede i dati personali a terze parti. I dati possono essere trasmessi a:</p>
+    <h2>8. Condivisione con terze parti</h2>
+    <p>nOi App non vende né cede i dati personali a terze parti per scopi commerciali. I dati possono essere trasmessi ai seguenti fornitori tecnici:</p>
     <ul>
-      <li><strong>Google LLC</strong> (Firebase Authentication, Firestore, Analytics) — come responsabile del trattamento, con adeguate garanzie per i trasferimenti verso paesi terzi.</li>
+      <li><strong>Google LLC</strong> (Firebase Authentication, Firestore, Analytics, FCM) — come responsabile del trattamento, con garanzie adeguate per i trasferimenti internazionali.</li>
       <li><strong>Google DeepMind</strong> (Gemini API) — per l'elaborazione dei contenuti AI. I dati vengono trasmessi in forma non identificativa ove possibile.</li>
+      <li><strong>Agora Inc.</strong> — per le funzionalità di comunicazione audio/video in tempo reale. I dati audio/video vengono trasmessi esclusivamente durante le chiamate attive.</li>
     </ul>
     <p>Tutti i fornitori sono vincolati da accordi di trattamento dati conformi al GDPR.</p>
 
-    <h2>7. Sicurezza e cifratura</h2>
-    <p>nOi App adotta misure tecniche e organizzative adeguate a proteggere i dati personali. È in fase di sviluppo un sistema di cifratura end-to-end (E2E) per le conversazioni, che verrà rilasciato in una versione futura dell'applicazione.</p>
+    <h2>9. Sicurezza e cifratura</h2>
+    <p>nOi App adotta misure tecniche e organizzative adeguate a proteggere i dati personali. Le comunicazioni avvengono tramite protocolli cifrati (HTTPS/TLS). È in fase di sviluppo un sistema di cifratura end-to-end (E2E) per le conversazioni, che verrà rilasciato in una versione futura dell'applicazione.</p>
 
-    <h2>8. Diritti dell'interessato</h2>
+    <h2>10. Diritti dell'interessato</h2>
     <p>Ai sensi del GDPR, l'utente ha diritto di:</p>
     <ul>
       <li>Accedere ai propri dati personali (Art. 15)</li>
@@ -93,16 +127,16 @@
     </ul>
     <p>Per esercitare questi diritti, scrivi a <a href="mailto:noicompapp@gmail.com">noicompapp@gmail.com</a>. Risponderemo entro 30 giorni.</p>
 
-    <h2>9. Cookie</h2>
+    <h2>11. Cookie</h2>
     <p>Il sito web utilizza cookie tecnici essenziali per il funzionamento e, solo con il consenso esplicito dell'utente, cookie analitici di Google Analytics. L'utente può modificare le proprie preferenze in qualsiasi momento tramite il banner cookie presente sul sito.</p>
 
-    <h2>10. Minori</h2>
+    <h2>12. Minori</h2>
     <p>Il servizio nOi non è destinato a persone di età inferiore ai 16 anni. Non raccogliamo consapevolmente dati personali di minori di 16 anni. Se vieni a conoscenza di dati di minori trattati senza consenso, contattaci immediatamente.</p>
 
-    <h2>11. Modifiche alla Privacy Policy</h2>
-    <p>Ci riserviamo il diritto di aggiornare questa Privacy Policy. Le modifiche sostanziali saranno comunicate via email agli utenti registrati e tramite avviso sul sito web.</p>
+    <h2>13. Modifiche alla Privacy Policy</h2>
+    <p>Ci riserviamo il diritto di aggiornare questa Privacy Policy. Le modifiche sostanziali saranno comunicate via email agli utenti registrati e tramite avviso sul sito web e sull'app.</p>
 
-    <p class="last-update">Ultimo aggiornamento: Aprile 2026</p>
+    <p class="last-update">Ultimo aggiornamento: 2 maggio 2026</p>
   </main>
 
   <footer>
