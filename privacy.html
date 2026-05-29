@@ -3,144 +3,175 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacy Policy — nOi App</title>
-  <link rel="icon" type="image/png" href="favicon.png">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+  <title>Privacy Policy — nOi</title>
   <style>
-    :root { --cream:#F5F0E8; --warm-white:#fdf9f5; --deep:#1C1410; --terracotta:#C4614A; --blush:#E8C4B4; --muted:#8C7B6E; }
-    * { margin:0; padding:0; box-sizing:border-box; }
-    body { background:var(--warm-white); color:var(--deep); font-family:'DM Sans',sans-serif; font-weight:300; }
-    nav { padding:20px 48px; display:flex; justify-content:space-between; align-items:center; background:var(--warm-white); border-bottom:1px solid var(--blush); }
-    .nav-logo { font-family:'Cormorant Garamond',serif; font-size:28px; font-weight:300; color:var(--deep); text-decoration:none; letter-spacing:0.1em; }
-    .nav-back { font-size:13px; color:var(--muted); text-decoration:none; letter-spacing:0.08em; border-bottom:1px solid var(--blush); padding-bottom:2px; transition:color 0.3s; }
-    .nav-back:hover { color:var(--terracotta); }
-    main { max-width:720px; margin:0 auto; padding:80px 40px 120px; }
-    .eyebrow { font-size:11px; letter-spacing:0.25em; text-transform:uppercase; color:var(--terracotta); margin-bottom:20px; }
-    h1 { font-family:'Cormorant Garamond',serif; font-size:clamp(36px,5vw,64px); font-weight:300; line-height:1.1; margin-bottom:40px; }
-    h2 { font-family:'Cormorant Garamond',serif; font-size:24px; font-weight:400; margin:48px 0 16px; color:var(--deep); }
-    h3 { font-size:15px; font-weight:500; margin:24px 0 8px; color:var(--deep); }
-    p, li { font-size:15px; line-height:1.85; color:var(--muted); margin-bottom:16px; }
-    ul { padding-left:20px; margin-bottom:16px; }
-    a { color:var(--terracotta); }
-    .last-update { font-size:12px; color:var(--muted); margin-top:60px; padding-top:24px; border-top:1px solid var(--blush); }
-    footer { background:var(--deep); padding:32px 48px; text-align:center; }
-    footer p { font-size:12px; color:var(--muted); margin:0; }
-    footer a { color:var(--muted); text-decoration:none; margin:0 12px; }
-    footer a:hover { color:var(--cream); }
-    @media (max-width:600px) { nav { padding:16px 20px; } main { padding:48px 20px 80px; } footer { padding:24px 20px; } }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #0D0A1A;
+      color: #E8E0F0;
+      line-height: 1.7;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+    .logo-mark {
+      width: 40px;
+      height: 40px;
+      background: #FF4270;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      font-weight: 800;
+      color: white;
+    }
+    .logo-text {
+      font-size: 24px;
+      font-weight: 700;
+      color: white;
+    }
+    h1 {
+      font-size: 28px;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 8px;
+    }
+    .updated {
+      color: #FF4270;
+      font-size: 13px;
+      margin-bottom: 40px;
+    }
+    h2 {
+      font-size: 16px;
+      font-weight: 700;
+      color: #FF4270;
+      margin: 32px 0 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    p { margin-bottom: 12px; color: #C8C0D8; }
+    ul {
+      padding-left: 20px;
+      margin-bottom: 12px;
+      color: #C8C0D8;
+    }
+    li { margin-bottom: 6px; }
+    a { color: #FF4270; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .highlight {
+      background: rgba(255, 66, 112, 0.08);
+      border: 1px solid rgba(255, 66, 112, 0.2);
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin: 20px 0;
+    }
+    .highlight p { color: #E8E0F0; margin: 0; }
+    footer {
+      margin-top: 60px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      color: #6B6080;
+      font-size: 13px;
+      text-align: center;
+    }
+    footer a { color: #FF4270; }
   </style>
 </head>
 <body>
-  <nav>
-    <a href="index.html" class="nav-logo">nOi</a>
-    <a href="index.html" class="nav-back">← Torna alla home</a>
-  </nav>
+  <div class="container">
 
-  <main>
-    <p class="eyebrow">Documento legale</p>
+    <div class="logo">
+      <div class="logo-mark">n</div>
+      <div class="logo-text">nOi</div>
+    </div>
+
     <h1>Privacy Policy</h1>
+    <div class="updated">Ultimo aggiornamento: 29 maggio 2026</div>
 
-    <p>La presente Privacy Policy descrive come nOi App raccoglie, utilizza e protegge le informazioni personali degli utenti dell'applicazione nOi ("l'App") e del sito web associato. È conforme al Regolamento Generale sulla Protezione dei Dati (GDPR) e ai requisiti di Google Play.</p>
+    <div class="highlight">
+      <p>nOi è un'app progettata per supportare le relazioni umane. La protezione dei tuoi dati personali è una nostra priorità. Questa informativa descrive quali dati raccogliamo, come li utilizziamo e quali sono i tuoi diritti.</p>
+    </div>
 
     <h2>1. Titolare del trattamento</h2>
-    <p>Titolare del trattamento: <strong>nOi App</strong><br>
-    Contatto: <a href="mailto:noicompapp@gmail.com">noicompapp@gmail.com</a><br>
-    Sede: Italia</p>
+    <p>Il titolare del trattamento dei dati è <strong>nOi App</strong>, contattabile all'indirizzo email: <a href="mailto:noicompapp@gmail.com">noicompapp@gmail.com</a></p>
 
-    <h2>2. Dati raccolti</h2>
-    <p>nOi App raccoglie le seguenti categorie di dati personali:</p>
+    <h2>2. Dati che raccogliamo</h2>
+    <p>Per fornire il servizio, raccogliamo i seguenti dati:</p>
     <ul>
-      <li><strong>Dati di registrazione:</strong> indirizzo email, nome (opzionale), preferenze di dispositivo.</li>
-      <li><strong>Dati dell'account:</strong> numero di telefono utilizzato per l'autenticazione tramite Firebase Authentication.</li>
-      <li><strong>Dati delle conversazioni:</strong> messaggi di testo, messaggi vocali e foto condivise dall'utente nell'app, necessari per il funzionamento del servizio.</li>
-      <li><strong>Dati tecnici:</strong> indirizzo IP, tipo di dispositivo, sistema operativo, dati di utilizzo raccolti tramite Firebase Analytics.</li>
-      <li><strong>Identificatore pubblicitario (Advertising ID):</strong> utilizzato da Firebase Analytics esclusivamente per misurare il funzionamento dell'app. Non viene utilizzato per mostrare annunci pubblicitari.</li>
+      <li><strong>Numero di telefono</strong> — utilizzato per l'autenticazione tramite OTP</li>
+      <li><strong>Nome utente</strong> — scelto da te durante la registrazione</li>
+      <li><strong>Messaggi e conversazioni</strong> — cifrati end-to-end con ECDH + AES-256-GCM</li>
+      <li><strong>Messaggi vocali</strong> — cifrati e memorizzati temporaneamente</li>
+      <li><strong>Foto e immagini</strong> — caricate volontariamente per profilo e stati</li>
+      <li><strong>Posizione GPS</strong> — solo se esplicitamente attivata, per funzionalità di presenza</li>
+      <li><strong>Contatti rubrica</strong> — scansionati localmente per trovare amici su nOi; i numeri non vengono memorizzati sui nostri server</li>
+      <li><strong>Token FCM</strong> — per l'invio di notifiche push</li>
     </ul>
 
-    <h2>3. Permessi dell'applicazione</h2>
-    <p>L'app richiede i seguenti permessi sul dispositivo, ciascuno con una finalità specifica:</p>
-
-    <h3>Fotocamera</h3>
-    <p>Il permesso fotocamera (<code>android.permission.CAMERA</code>) è utilizzato esclusivamente per consentire agli utenti di scattare foto da condividere nelle conversazioni private con il proprio partner all'interno dell'app. Le foto non vengono trasmesse a terze parti né utilizzate per altre finalità.</p>
-
-    <h3>Microfono</h3>
-    <p>Il permesso microfono (<code>android.permission.RECORD_AUDIO</code>) è utilizzato per registrare messaggi vocali da inviare nelle conversazioni. Le registrazioni vengono trasmesse in modo sicuro e associate esclusivamente all'account dell'utente.</p>
-
-    <h3>Archiviazione e file multimediali</h3>
-    <p>I permessi di lettura dei media (<code>READ_MEDIA_IMAGES</code>, <code>READ_MEDIA_AUDIO</code>, <code>READ_MEDIA_VIDEO</code>) sono utilizzati per consentire all'utente di selezionare foto e file audio dal proprio dispositivo da condividere in chat.</p>
-
-    <h3>Contatti</h3>
-    <p>Il permesso contatti (<code>android.permission.READ_CONTACTS</code>) è utilizzato per facilitare la connessione con il partner tramite il numero di telefono. I dati dei contatti non vengono caricati su server esterni.</p>
-
-    <h3>SMS</h3>
-    <p>I permessi SMS (<code>RECEIVE_SMS</code>, <code>READ_SMS</code>) sono utilizzati esclusivamente per il rilevamento automatico del codice OTP durante la verifica del numero di telefono tramite Firebase Authentication. Il contenuto degli SMS non viene letto né trasmesso.</p>
-
-    <h3>Posizione</h3>
-    <p>I permessi di posizione (<code>ACCESS_FINE_LOCATION</code>, <code>ACCESS_COARSE_LOCATION</code>) sono utilizzati per funzionalità opzionali di condivisione della posizione con il partner. La posizione viene condivisa solo con l'esplicito consenso dell'utente e non viene trasmessa a terze parti.</p>
-
-    <h3>Notifiche</h3>
-    <p>Il permesso notifiche (<code>POST_NOTIFICATIONS</code>) è utilizzato per inviare notifiche push relative ai nuovi messaggi ricevuti dall'utente.</p>
-
-    <h3>Bluetooth e rete locale</h3>
-    <p>I permessi Bluetooth e Wi-Fi sono utilizzati dall'SDK Agora per la funzionalità di comunicazione audio/video in tempo reale, esclusivamente durante le chiamate attive.</p>
-
-    <h2>4. Identificatore pubblicitario (Advertising ID)</h2>
-    <p>L'app utilizza l'Advertising ID di Google (<code>com.google.android.gms.permission.AD_ID</code>) tramite Firebase Analytics per misurare le performance dell'app e migliorare l'esperienza utente. L'Advertising ID <strong>non è utilizzato</strong> per scopi pubblicitari né per targeting comportamentale. L'utente può reimpostare o disabilitare l'Advertising ID nelle impostazioni del proprio dispositivo Android.</p>
-
-    <h2>5. Finalità del trattamento</h2>
+    <h2>3. Finalità del trattamento</h2>
     <ul>
-      <li>Fornitura del servizio nOi e delle sue funzionalità.</li>
-      <li>Autenticazione sicura dell'utente tramite numero di telefono.</li>
-      <li>Invio di notifiche relative all'utilizzo del servizio.</li>
-      <li>Miglioramento del prodotto tramite analisi statistiche aggregate anonimizzate.</li>
-      <li>Adempimento di obblighi legali.</li>
+      <li>Erogazione del servizio di comunicazione e companion AI</li>
+      <li>Autenticazione e sicurezza dell'account</li>
+      <li>Invio di notifiche push</li>
+      <li>Miglioramento del servizio tramite dati aggregati e anonimi</li>
     </ul>
 
-    <h2>6. Base giuridica</h2>
-    <p>Il trattamento si basa sul consenso dell'interessato (Art. 6(1)(a) GDPR) e sull'esecuzione di un contratto (Art. 6(1)(b) GDPR). Per le comunicazioni di marketing, il consenso può essere revocato in qualsiasi momento.</p>
+    <h2>4. Base giuridica</h2>
+    <p>Il trattamento si basa sull'esecuzione del contratto di servizio (Art. 6.1.b GDPR) e, per i dati facoltativi come la posizione GPS, sul tuo consenso esplicito (Art. 6.1.a GDPR).</p>
 
-    <h2>7. Conservazione dei dati</h2>
-    <p>I dati vengono conservati per il tempo necessario alle finalità indicate e comunque non oltre 3 anni dall'ultima interazione, salvo diversi obblighi di legge. L'utente può richiedere la cancellazione immediata dei propri dati scrivendo a <a href="mailto:noicompapp@gmail.com">noicompapp@gmail.com</a>.</p>
+    <h2>5. Crittografia end-to-end</h2>
+    <div class="highlight">
+      <p>🔐 I tuoi messaggi sono protetti da crittografia end-to-end con ECDH + AES-256-GCM. Le chiavi private non lasciano mai il tuo dispositivo in chiaro. nOi non può leggere il contenuto delle tue conversazioni.</p>
+    </div>
 
-    <h2>8. Condivisione con terze parti</h2>
-    <p>nOi App non vende né cede i dati personali a terze parti per scopi commerciali. I dati possono essere trasmessi ai seguenti fornitori tecnici:</p>
+    <h2>6. Conservazione dei dati</h2>
+    <p>I tuoi dati vengono conservati fino alla cancellazione del tuo account. Puoi eliminare il tuo account in qualsiasi momento dalle Impostazioni dell'app. La cancellazione è immediata e permanente.</p>
+
+    <h2>7. Trasferimento dei dati</h2>
+    <p>I dati vengono trattati dai seguenti sub-processor:</p>
     <ul>
-      <li><strong>Google LLC</strong> (Firebase Authentication, Firestore, Analytics, FCM) — come responsabile del trattamento, con garanzie adeguate per i trasferimenti internazionali.</li>
-      <li><strong>Google DeepMind</strong> (Gemini API) — per l'elaborazione dei contenuti AI. I dati vengono trasmessi in forma non identificativa ove possibile.</li>
-      <li><strong>Agora Inc.</strong> — per le funzionalità di comunicazione audio/video in tempo reale. I dati audio/video vengono trasmessi esclusivamente durante le chiamate attive.</li>
+      <li><strong>Google Firebase</strong> (autenticazione, database, storage) — USA, con Standard Contractual Clauses ex Art. 46 GDPR</li>
+      <li><strong>Oracle Cloud Infrastructure</strong> (server notifiche e backup chiavi cifrate) — data center Italy North (Turin)</li>
+      <li><strong>Agora.io</strong> (chiamate vocali e video) — USA, con Standard Contractual Clauses</li>
+      <li><strong>Google Gemini AI</strong> (assistente AI) — i messaggi inviati all'AI sono trattati da Google secondo la loro Privacy Policy</li>
     </ul>
-    <p>Tutti i fornitori sono vincolati da accordi di trattamento dati conformi al GDPR.</p>
 
-    <h2>9. Sicurezza e cifratura</h2>
-    <p>nOi App adotta misure tecniche e organizzative adeguate a proteggere i dati personali. Le comunicazioni avvengono tramite protocolli cifrati (HTTPS/TLS). È in fase di sviluppo un sistema di cifratura end-to-end (E2E) per le conversazioni, che verrà rilasciato in una versione futura dell'applicazione.</p>
-
-    <h2>10. Diritti dell'interessato</h2>
-    <p>Ai sensi del GDPR, l'utente ha diritto di:</p>
+    <h2>8. I tuoi diritti (GDPR)</h2>
+    <p>Hai il diritto di:</p>
     <ul>
-      <li>Accedere ai propri dati personali (Art. 15)</li>
-      <li>Rettificare i dati inesatti (Art. 16)</li>
-      <li>Ottenere la cancellazione dei dati ("diritto all'oblio", Art. 17)</li>
-      <li>Limitare il trattamento (Art. 18)</li>
-      <li>Ricevere i dati in formato portabile (Art. 20)</li>
-      <li>Opporsi al trattamento (Art. 21)</li>
-      <li>Revocare il consenso in qualsiasi momento</li>
+      <li><strong>Accesso</strong> — richiedere una copia dei tuoi dati</li>
+      <li><strong>Rettifica</strong> — correggere dati inesatti</li>
+      <li><strong>Cancellazione</strong> (Art. 17) — eliminare il tuo account e tutti i dati dall'app</li>
+      <li><strong>Portabilità</strong> — ricevere i tuoi dati in formato strutturato</li>
+      <li><strong>Opposizione</strong> — opporti al trattamento in determinate circostanze</li>
+      <li><strong>Reclamo</strong> — presentare reclamo al Garante per la protezione dei dati personali (<a href="https://www.garanteprivacy.it" target="_blank">garanteprivacy.it</a>)</li>
     </ul>
-    <p>Per esercitare questi diritti, scrivi a <a href="mailto:noicompapp@gmail.com">noicompapp@gmail.com</a>. Risponderemo entro 30 giorni.</p>
+    <p>Per esercitare i tuoi diritti, scrivi a <a href="mailto:noicompapp@gmail.com">noicompapp@gmail.com</a>. Risponderemo entro 30 giorni.</p>
 
-    <h2>11. Cookie</h2>
-    <p>Il sito web utilizza cookie tecnici essenziali per il funzionamento e, solo con il consenso esplicito dell'utente, cookie analitici di Google Analytics. L'utente può modificare le proprie preferenze in qualsiasi momento tramite il banner cookie presente sul sito.</p>
+    <h2>9. Minori</h2>
+    <p>nOi è destinata a utenti di età pari o superiore a 18 anni. Non raccogliamo consapevolmente dati di minori. Se ritieni che un minore abbia creato un account, contattaci per la cancellazione immediata.</p>
 
-    <h2>12. Minori</h2>
-    <p>Il servizio nOi non è destinato a persone di età inferiore ai 16 anni. Non raccogliamo consapevolmente dati personali di minori di 16 anni. Se vieni a conoscenza di dati di minori trattati senza consenso, contattaci immediatamente.</p>
+    <h2>10. Modifiche a questa informativa</h2>
+    <p>Eventuali modifiche sostanziali saranno comunicate tramite notifica in-app con almeno 15 giorni di anticipo.</p>
 
-    <h2>13. Modifiche alla Privacy Policy</h2>
-    <p>Ci riserviamo il diritto di aggiornare questa Privacy Policy. Le modifiche sostanziali saranno comunicate via email agli utenti registrati e tramite avviso sul sito web e sull'app.</p>
+    <footer>
+      <p>nOi App · <a href="mailto:noicompapp@gmail.com">noicompapp@gmail.com</a></p>
+      <p style="margin-top:8px">
+        <a href="/privacy">Privacy Policy</a> ·
+        <a href="/terms">Termini di servizio</a>
+      </p>
+    </footer>
 
-    <p class="last-update">Ultimo aggiornamento: 2 maggio 2026</p>
-  </main>
-
-  <footer>
-    <p>© 2026 nOi App &nbsp;·&nbsp; <a href="index.html">Home</a> <a href="privacy.html">Privacy</a> <a href="terms.html">Termini</a> &nbsp;·&nbsp; <a href="mailto:noicompapp@gmail.com">noicompapp@gmail.com</a></p>
-  </footer>
+  </div>
 </body>
 </html>
