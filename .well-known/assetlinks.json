@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.noicompanion.noi_app",
+      "sha256_cert_fingerprints": [
+        "0C:2F:56:F2:3C:F2:4B:62:BD:A5:2F:70:1D:63:7F:99:AD:4E:3C:28:74:AE:CD:15:3A:C1:55:4C:49:DA:92:AE"
+      ]
+    }
+  }
+]

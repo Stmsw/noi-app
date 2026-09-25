@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apri nOi</title>
+  <link rel="icon" type="image/png" href="favicon.png">
+  <meta name="robots" content="noindex">
+  <style>
+    :root {
+      --warm-white: #fdf9f5;
+      --deep: #1C1410;
+      --terracotta: #C4614A;
+      --muted: #8C7B6E;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--deep);
+      color: var(--warm-white);
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 24px;
+    }
+    .card { max-width: 360px; }
+    .logo { font-size: 15px; letter-spacing: 0.3em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 24px; }
+    h1 { font-size: 20px; font-weight: 500; margin-bottom: 12px; }
+    p { font-size: 14px; color: var(--muted); line-height: 1.6; margin-bottom: 28px; }
+    .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      background: var(--terracotta);
+      color: var(--warm-white);
+      text-decoration: none;
+      border-radius: 8px;
+      font-size: 14px;
+    }
+    .spinner {
+      width: 28px; height: 28px;
+      border: 3px solid rgba(255,255,255,0.15);
+      border-top-color: var(--terracotta);
+      border-radius: 50%;
+      margin: 0 auto 24px;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <div class="spinner" id="spinner"></div>
+    <p class="logo">nOi</p>
+    <h1>Ti stiamo portando su nOi…</h1>
+    <p>Se non succede nulla entro qualche secondo, tocca il bottone qui sotto.</p>
+    <a class="btn" id="fallback-link" href="https://play.google.com/store/apps/details?id=com.noicompanion.noi_app">
+      Apri su Google Play
+    </a>
+  </div>
+
+  <script>
+    // Sprint REFERRAL-AUTO (25 settembre 2026): pagina di solo passaggio —
+    // non contiene mai un codice da far leggere/digitare a una persona,
+    // lo incorpora nel link stesso.
+    //
+    // - App non installata: Play Store riceve `referrer=ref%3D<codice>`,
+    //   che conserva attraverso l'installazione e riconsegna all'app al
+    //   primo avvio tramite la Play Install Referrer API
+    //   (ReferralLinkService.captureInstallReferrer).
+    // - App già installata: proviamo prima un Android App Link diretto
+    //   (funziona silenziosamente se questo dominio risulta verificato,
+    //   vedi /.well-known/assetlinks.json); se il dispositivo apre comunque
+    //   questa pagina web, l'intent:// sottostante prova comunque a lanciare
+    //   l'app installata prima di ripiegare sul Play Store.
+    var params = new URLSearchParams(window.location.search);
+    var code = (params.get('ref') || '').trim();
+
+    var playStoreUrl = 'https://play.google.com/store/apps/details?id=com.noicompanion.noi_app';
+    if (code) {
+      playStoreUrl += '&referrer=' + encodeURIComponent('ref=' + code);
+    }
+    document.getElementById('fallback-link').href = playStoreUrl;
+
+    var isAndroid = /Android/i.test(navigator.userAgent);
+    if (isAndroid) {
+      var intentUrl = 'intent://noicompanion.app/invite.html?ref=' + encodeURIComponent(code) +
+        '#Intent;scheme=https;package=com.noicompanion.noi_app;S.browser_fallback_url=' +
+        encodeURIComponent(playStoreUrl) + ';end';
+      window.location.href = intentUrl;
+    } else {
+      // Desktop o iOS: nessun App Link Android possibile, si va dritti al
+      // Play Store (la pagina resta comunque visibile e sicura da condividere).
+      window.location.href = playStoreUrl;
+    }
+  </script>
+</body>
+</html>
