@@ -78,16 +78,25 @@
     //   l'app installata prima di ripiegare sul Play Store.
     var params = new URLSearchParams(window.location.search);
     var code = (params.get('ref') || '').trim();
+    // FIX-INVITO-PARTNER (26 settembre 2026): `t=partner` distingue un invito
+    // "collegati con me come partner" da un referral generico — deve
+    // sopravvivere sia nel referrer Play Store sia nell'App Link diretto,
+    // esattamente come il codice stesso.
+    var type = (params.get('t') || '').trim();
+
+    var referrerString = code ? 'ref=' + code : '';
+    if (referrerString && type) referrerString += '&t=' + type;
 
     var playStoreUrl = 'https://play.google.com/store/apps/details?id=com.noicompanion.noi_app';
-    if (code) {
-      playStoreUrl += '&referrer=' + encodeURIComponent('ref=' + code);
+    if (referrerString) {
+      playStoreUrl += '&referrer=' + encodeURIComponent(referrerString);
     }
     document.getElementById('fallback-link').href = playStoreUrl;
 
     var isAndroid = /Android/i.test(navigator.userAgent);
     if (isAndroid) {
-      var intentUrl = 'intent://noicompanion.app/invite.html?ref=' + encodeURIComponent(code) +
+      var appLinkQuery = 'ref=' + encodeURIComponent(code) + (type ? '&t=' + encodeURIComponent(type) : '');
+      var intentUrl = 'intent://deluxe-boba-f2460a.netlify.app/invite.html?' + appLinkQuery +
         '#Intent;scheme=https;package=com.noicompanion.noi_app;S.browser_fallback_url=' +
         encodeURIComponent(playStoreUrl) + ';end';
       window.location.href = intentUrl;
