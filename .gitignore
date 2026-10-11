@@ -1,0 +1,15 @@
+# Firebase / Google service account keys — MAI in git
+*-firebase-adminsdk-*.json
+noi-app-f8553-*.json
+firebase-adminsdk-fbsvc@*.txt
+serviceAccountKey.json
+service-account*.json
+
+# Credenziali e materiale riservato nel repo root — MAI in git (ACCESS_MAP.md, esito 7/10/2026)
+CHIAVE KEYSTONE.txt
+AGORA APPID.txt
+INSTAGRAM_NOI/
+NOI APP-desktop/
+noi-app-*.json
+*.key
+*.jks
