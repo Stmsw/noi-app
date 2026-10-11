@@ -36,9 +36,9 @@
     .notice p { margin:0; font-size:14px; color:var(--text-pri); }
     form { margin-top:40px; }
     label { display:block; font-size:13px; letter-spacing:0.08em; color:var(--text-pri); margin-bottom:8px; }
-    input[type="email"], textarea { width:100%; padding:14px 16px; border:1px solid var(--border-sub); border-radius:8px; font-family:'DM Sans',sans-serif; font-size:15px; font-weight:300; background:var(--surface); color:var(--text-pri); outline:none; transition:border-color 0.3s; margin-bottom:24px; }
-    input[type="email"]::placeholder, textarea::placeholder { color:var(--text-sec); }
-    input[type="email"]:focus, textarea:focus { border-color:var(--accent); }
+    input[type="email"], input[type="tel"], textarea { width:100%; padding:14px 16px; border:1px solid var(--border-sub); border-radius:8px; font-family:'DM Sans',sans-serif; font-size:15px; font-weight:300; background:var(--surface); color:var(--text-pri); outline:none; transition:border-color 0.3s; margin-bottom:24px; }
+    input[type="email"]::placeholder, input[type="tel"]::placeholder, textarea::placeholder { color:var(--text-sec); }
+    input[type="email"]:focus, input[type="tel"]:focus, textarea:focus { border-color:var(--accent); }
     textarea { resize:vertical; min-height:100px; }
     .checkbox-row { display:flex; gap:12px; align-items:flex-start; margin-bottom:32px; }
     .checkbox-row input[type="checkbox"] { margin-top:3px; flex-shrink:0; accent-color:var(--accent); width:16px; height:16px; }
@@ -66,16 +66,19 @@
     <p class="eyebrow">Gestione account</p>
     <h1>Elimina il tuo account</h1>
 
-    <p>Puoi richiedere la cancellazione permanente del tuo account nOi e di tutti i dati associati compilando il modulo qui sotto. Elaboriamo le richieste entro 30 giorni.</p>
+    <p>Puoi eliminare il tuo account direttamente dall'app (Impostazioni › Elimina account): vengono cancellati subito l'account di accesso, il profilo, gli stati, il Confessionale, i collegamenti con i partner, i check-in e i dati salvati sul telefono.</p>
 
-    <p>La cancellazione dell'account comporta l'eliminazione permanente di:</p>
+    <p>Per eliminare anche tutti gli altri dati associati, oppure se non hai più accesso all'app, compila il modulo qui sotto. Elaboriamo le richieste entro 30 giorni ed eliminiamo:</p>
     <ul>
-      <li>Profilo e dati di registrazione</li>
-      <li>Tutta la cronologia delle conversazioni e dei messaggi</li>
-      <li>Messaggi vocali e foto condivise nell'app</li>
-      <li>Memorie e dati elaborati dall'AI</li>
+      <li>Profilo e dati di registrazione, compresi numero di telefono e PIN di accesso</li>
+      <li>Messaggi vocali, foto, video e documenti che hai inviato in chat, e la foto profilo</li>
+      <li>Il backup cifrato della tua chiave</li>
+      <li>Conversazioni con l'assistente AI, ricordi, registro di coppia, Spazio Privé e altri dati elaborati dall'AI</li>
+      <li>Agenda, dati del ciclo, profilo nOiNet, cronologia delle chiamate e partite</li>
       <li>Impostazioni e preferenze</li>
     </ul>
+
+    <p>I messaggi che hai inviato ad altri utenti restano visibili ai destinatari.</p>
 
     <div class="notice">
       <p><strong>Attenzione:</strong> questa operazione è irreversibile. Una volta eliminato, il tuo account non potrà essere recuperato. Se hai un abbonamento attivo, annullalo prima dalla app o dal Google Play Store per evitare addebiti futuri.</p>
@@ -85,7 +88,10 @@
       <input type="hidden" name="form-name" value="delete-account">
       <input type="hidden" name="bot-field" style="display:none">
 
-      <label for="email">Indirizzo email dell'account *</label>
+      <label for="phone">Numero di telefono dell'account *</label>
+      <input type="tel" id="phone" name="phone" required placeholder="+39 333 1234567" autocomplete="tel">
+
+      <label for="email">Email per ricontattarti *</label>
       <input type="email" id="email" name="email" required placeholder="la-tua-email@esempio.com" autocomplete="email">
 
       <label for="reason">Motivo della cancellazione (opzionale)</label>

@@ -92,7 +92,7 @@
 
     <p class="legal-eyebrow">Informativa legale</p>
     <h1 class="legal-title">Privacy <em>Policy</em></h1>
-    <p class="legal-date">Ultimo aggiornamento: 29 maggio 2026</p>
+    <p class="legal-date">Ultimo aggiornamento: 11 ottobre 2026</p>
 
     <div class="legal-highlight">
       <p>nOi è un'app progettata per supportare le relazioni umane. La protezione dei tuoi dati personali è una nostra priorità. Questa informativa descrive quali dati raccogliamo, come li utilizziamo e quali sono i tuoi diritti.</p>
@@ -107,14 +107,19 @@
       <h2>2. Dati che raccogliamo</h2>
       <p>Per fornire il servizio, raccogliamo i seguenti dati:</p>
       <ul>
-        <li><strong>Numero di telefono</strong> — utilizzato per l'autenticazione tramite OTP</li>
-        <li><strong>Nome utente</strong> — scelto da te durante la registrazione</li>
-        <li><strong>Messaggi e conversazioni</strong> — cifrati end-to-end con ECDH + AES-256-GCM</li>
-        <li><strong>Messaggi vocali</strong> — cifrati e memorizzati temporaneamente</li>
-        <li><strong>Foto e immagini</strong> — caricate volontariamente per profilo e stati</li>
-        <li><strong>Posizione GPS</strong> — solo se esplicitamente attivata, per funzionalità di presenza</li>
-        <li><strong>Contatti rubrica</strong> — scansionati localmente per trovare amici su nOi; i numeri non vengono memorizzati sui nostri server</li>
-        <li><strong>Token FCM</strong> — per l'invio di notifiche push</li>
+        <li><strong>Numero di telefono e PIN di accesso</strong> — in questa fase di test l'accesso avviene con numero di telefono e PIN, su una lista di numeri autorizzati gestita da noi: il numero e il PIN sono registrati nei nostri sistemi per verificare l'accesso. Non inviamo SMS di verifica</li>
+        <li><strong>Profilo</strong> — il nome che scegli, il nome del partner, il codice invito, lo stato dell'abbonamento e lo stato di presenza (online, ultimo accesso e, se lo attivi, "in viaggio")</li>
+        <li><strong>Messaggi di testo tra utenti</strong> — cifrati end-to-end (vedi sezione 5)</li>
+        <li><strong>Messaggi vocali, foto, video e documenti inviati in chat</strong> — non sono cifrati end-to-end: vengono caricati sul nostro server (vedi sezione 5)</li>
+        <li><strong>Foto profilo e stati</strong> — caricati volontariamente; gli stati sono visibili per 24 ore</li>
+        <li><strong>Posizione</strong> — solo se concedi il permesso, e mai in background. Precisa quando la invii in chat (le coordinate restano nel messaggio, non cifrate end-to-end) o quando attivi SOS o la modalità crisi. Approssimativa (circa 1 km) per dare contesto all'assistente AI e per il meteo (vedi sezioni 3 e 7). Per lo stato "in viaggio" leggiamo la velocità a app aperta e salviamo solo un sì/no</li>
+        <li><strong>Contatti della rubrica</strong> — se concedi il permesso, i numeri della rubrica vengono confrontati con quelli degli iscritti a nOi tramite il nostro database, all'avvio e ogni 30 minuti. Non salviamo la tua rubrica, ma conserviamo nel tuo profilo l'elenco dei contatti che risultano iscritti a nOi, con il loro numero</li>
+        <li><strong>Conversazioni con l'assistente AI e contenuti delle funzioni AI</strong> — chat con nOi, Confessionale, Spazio Privé, ricordi e registro di coppia, check-in emotivi</li>
+        <li><strong>Agenda e ciclo</strong> — eventi dell'agenda e, se usi il tracciamento del ciclo, i dati del ciclo (dati relativi alla salute), anche condivisi con il partner se lo scegli</li>
+        <li><strong>Profilo "scoperta" (nOiNet)</strong> — se lo compili: cosa cerchi, fascia d'età cercata, istruzione, sport, hobby, abitudini, preferenze e descrizione</li>
+        <li><strong>Chiamate</strong> — l'audio e il video passano in tempo reale attraverso Agora e non vengono registrati da noi; conserviamo chi ha chiamato chi, quando, la durata e l'esito</li>
+        <li><strong>Acquisti</strong> — stato e cronologia dell'abbonamento, tramite Google Play e RevenueCat</li>
+        <li><strong>Dati tecnici raccolti automaticamente</strong> — token per le notifiche push, identificatori di installazione Firebase, rapporti sugli arresti anomali (associati al tuo identificativo utente) e dati sulle prestazioni dell'app</li>
       </ul>
     </div>
 
@@ -124,8 +129,10 @@
         <li>Erogazione del servizio di comunicazione e companion AI</li>
         <li>Autenticazione e sicurezza dell'account</li>
         <li>Invio di notifiche push</li>
+        <li>Diagnosi di arresti anomali e problemi di prestazioni</li>
         <li>Miglioramento del servizio tramite dati aggregati e anonimi</li>
       </ul>
+      <p><strong>Cosa riceve l'assistente AI.</strong> Quando usi l'assistente, il testo che scrivi viene inviato a Google Gemini insieme a un contesto che lo aiuta a risponderti: data e ora, livello di batteria e tipo di connessione, posizione approssimativa (circa 1 km) e meteo, se hai concesso il permesso di posizione, i prossimi eventi dell'agenda, la fase del ciclo se usi il tracciamento, una sintesi delle conversazioni precedenti con l'AI e, con l'opzione "Contesto chat P2P" (attiva in partenza, disattivabile in Impostazioni › AI), gli ultimi messaggi di testo della chat con il tuo partner, compresi quelli scritti dal partner. Il Confessionale usa anche gli ultimi messaggi delle tue chat e i tuoi ricordi; lo Spazio Privé e la mediazione inviano a Gemini ciò che scrivi lì. Se l'AI rileva una tensione elevata nella conversazione, il partner può ricevere una notifica.</p>
     </div>
 
     <div class="legal-section">
@@ -136,23 +143,32 @@
     <div class="legal-section">
       <h2>5. Crittografia end-to-end</h2>
       <div class="legal-highlight">
-        <p>🔐 I tuoi messaggi sono protetti da crittografia end-to-end con ECDH + AES-256-GCM. Le chiavi private non lasciano mai il tuo dispositivo in chiaro. nOi non può leggere il contenuto delle tue conversazioni.</p>
+        <p>🔐 Il testo dei messaggi tra utenti è cifrato end-to-end con ECDH + AES-256-GCM: sui nostri server arriva solo in forma cifrata.</p>
       </div>
+      <p><strong>Cosa non è cifrato end-to-end.</strong> Messaggi vocali, foto, video e documenti inviati in chat, la foto profilo e le posizioni inviate in chat. I file sono conservati sul nostro server e sono accessibili a chiunque disponga del loro indirizzo (un link lungo e non indovinabile, condiviso solo con i partecipanti alla conversazione). Non sono cifrati end-to-end nemmeno le conversazioni con l'assistente AI, il Confessionale, lo Spazio Privé, l'agenda, i dati del ciclo e gli altri contenuti delle funzioni AI.</p>
+      <p><strong>Quando i messaggi escono dalla cifratura.</strong> Il tuo telefono decifra i messaggi per mostrarteli. Se usi le funzioni AI con il contesto della chat attivo, una parte dei messaggi decifrati viene inviata a Google Gemini (vedi sezione 3).</p>
+      <p><strong>Backup della chiave.</strong> Per farti ritrovare le chat su un nuovo telefono, una copia della tua chiave privata, cifrata con un PIN, è conservata sul nostro server. In questa fase di test il PIN che protegge questa copia è lo stesso PIN di accesso, che è registrato nei nostri sistemi. Finché resta così, non possiamo garantire per via tecnica di non poter accedere alla tua chiave e quindi ai tuoi messaggi.</p>
     </div>
 
     <div class="legal-section">
       <h2>6. Conservazione dei dati</h2>
-      <p>I tuoi dati vengono conservati fino alla cancellazione del tuo account. Puoi eliminare il tuo account in qualsiasi momento dalle Impostazioni dell'app. La cancellazione è immediata e permanente.</p>
+      <p>I tuoi dati vengono conservati fino alla cancellazione del tuo account; non applichiamo scadenze automatiche, salvo la visibilità di 24 ore degli stati. Puoi eliminare il tuo account in qualsiasi momento dalle Impostazioni dell'app.</p>
+      <p><strong>Cosa elimina subito l'app:</strong> l'account di accesso, il profilo, gli stati, il Confessionale, i collegamenti con i partner, i check-in, le foto caricate su Firebase e tutti i dati salvati sul telefono.</p>
+      <p><strong>Cosa resta e come chiederne la cancellazione:</strong> i file inviati in chat e la foto profilo sul nostro server, il backup della chiave, le conversazioni con l'assistente AI, agenda, ciclo, ricordi, registro, Spazio Privé, profilo nOiNet, cronologia delle chiamate, partite e i dati dell'abbonamento presso RevenueCat. Per eliminarli scrivi a <a href="mailto:noicompapp@gmail.com">noicompapp@gmail.com</a> o usa la pagina <a href="delete-account.html">Elimina il tuo account</a>: li cancelliamo entro 30 giorni. I messaggi che hai inviato ad altri restano visibili ai destinatari. I rapporti sugli arresti anomali vengono conservati da Firebase Crashlytics per il periodo previsto dal servizio.</p>
     </div>
 
     <div class="legal-section">
       <h2>7. Trasferimento dei dati</h2>
-      <p>I dati vengono trattati dai seguenti sub-processor:</p>
+      <p>I dati vengono trattati dai seguenti fornitori e servizi esterni:</p>
       <ul>
-        <li><strong>Google Firebase</strong> (autenticazione, database, storage) — USA, con Standard Contractual Clauses ex Art. 46 GDPR</li>
-        <li><strong>Oracle Cloud Infrastructure</strong> (server notifiche e backup chiavi cifrate) — data center Italy North (Turin)</li>
+        <li><strong>Google Firebase</strong> (autenticazione, database, archiviazione di foto e stati, funzioni server, notifiche push, rapporti sugli arresti anomali, prestazioni, protezione dell'app) — database principale in Europa; funzioni server e altri servizi negli USA, con Standard Contractual Clauses ex Art. 46 GDPR</li>
+        <li><strong>Oracle Cloud Infrastructure</strong> (server per file inviati in chat, foto profilo, notifiche, chiamate e backup delle chiavi cifrate)</li>
         <li><strong>Agora.io</strong> (chiamate vocali e video) — USA, con Standard Contractual Clauses</li>
-        <li><strong>Google Gemini AI</strong> (assistente AI) — i messaggi inviati all'AI sono trattati da Google secondo la loro Privacy Policy</li>
+        <li><strong>Google Gemini AI</strong> (assistente AI) — i testi e il contesto inviati all'AI (vedi sezione 3) sono trattati da Google secondo i termini del servizio Gemini e la Privacy Policy di Google</li>
+        <li><strong>Riconoscimento vocale di Android</strong> (dettatura all'assistente e chiamata con l'AI) — fornito dal sistema del telefono, di norma da Google, che può elaborare l'audio sui propri server</li>
+        <li><strong>Google Play e RevenueCat</strong> (acquisti e gestione dell'abbonamento; Google Play fornisce anche il codice invito con cui hai installato l'app)</li>
+        <li><strong>Open-Meteo</strong> (meteo per l'assistente AI) — riceve la posizione approssimativa (circa 1 km)</li>
+        <li><strong>OpenStreetMap</strong> (mappe) — riceve la zona della mappa che stai visualizzando</li>
       </ul>
     </div>
 
